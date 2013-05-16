@@ -162,6 +162,18 @@ default[:vsftpd][:ssl_cert_path] = "/etc/ssl/certs"
 default[:vsftpd][:ssl_private_key_path] = "/etc/ssl/private"
 default[:vsftpd][:ssl_cert_name] = "vsftpd"
 default[:vsftpd][:ssl_cert_cookbook] = "vsftpd"
+
+# Only applies if ssl_enable is active. If set to YES, anonymous users will be
+# allowed to use secured SSL connections.
+default[:vsftpd][:allow_anon_ssl] = false
+# Only applies if ssl_enable is activated. If activated, all non-anonymous
+# logins are forced to use a secure SSL connection in order to send and receive
+# data on data connections.
+default[:vsftpd][:force_local_data_ssl] = true
+# Only applies if ssl_enable is activated. If activated, all non-anonymous
+# logins are forced to use a secure SSL connection in order to send the password.
+default[:vsftpd][:force_local_logins_ssl] = true
+
 #
 # This option can be used to select which SSL ciphers vsftpd will allow for
 # encrypted SSL connections. See the ciphers man page for further details. Note
@@ -313,3 +325,7 @@ default[:vsftpd][:user_sub_token] = "$USER"
 # This option represents a directory which vsftpd will try to change into after
 # a local (i.e. non-anonymous) login. Failure is silently ignored.
 default[:vsftpd][:local_root] = nil
+#
+#This string option allows you to override the greeting banner displayed by
+# vsftpd when a connection first comes in.
+default[:vsftpd][:ftpd_banner] = nil
