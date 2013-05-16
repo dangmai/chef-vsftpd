@@ -61,7 +61,7 @@ default[:vsftpd][:local_enable] = true
 # This controls whether any FTP commands which change the filesystem
 # are allowed or not. These commands are: STOR, DELE, RNFR, RNTO, MKD,
 # RMD, APPE and SITE.
-default[:vsftpd][:write_enable] = false
+default[:vsftpd][:write_enable] = true
 #
 # The value that the umask for file creation is set to for local users. NOTE!
 # If you want to specify octal values, remember the "0" prefix otherwise the
@@ -329,3 +329,6 @@ default[:vsftpd][:local_root] = nil
 #This string option allows you to override the greeting banner displayed by
 # vsftpd when a connection first comes in.
 default[:vsftpd][:ftpd_banner] = nil
+#
+# A backport fix to allow local users to write to their home dirs
+default[:vsftpd][:allow_writeable_chroot] = true

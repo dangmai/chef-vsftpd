@@ -77,3 +77,7 @@ deny_file={<%= node[:vsftpd][:deny_file].join(",") %>}
 <% if node['vsftpd']['ftpd_banner'] %>
 ftpd_banner=<%= node[:vsftpd][:ftpd_banner] %>
 <% end %>
+
+<% if node['vsftpd']['allow_writeable_chroot'] %>
+allow_writeable_chroot=YES
+<% end %>
